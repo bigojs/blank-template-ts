@@ -22,9 +22,11 @@ const server: http.Server = http.createServer((req, res) => {
           const homePage = new HomeComponent({title: title}).render()
           res.writeHead(200, { 'Content-Type': 'text/html' })
           res.end(new MasterComponent({page: homePage, title: title}).render(), 'utf-8')
+          break
         case 'users':
           res.writeHead(200)
           res.end('respond with a resource')
+          break
         // Returning static files from the `/static` folder
         default:
           let filePath: string = 'static' + req.url
